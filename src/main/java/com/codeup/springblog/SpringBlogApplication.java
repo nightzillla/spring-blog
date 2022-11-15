@@ -10,4 +10,5 @@ public class SpringBlogApplication {
         SpringApplication.run(SpringBlogApplication.class, args);
     }
     // http://localhost:8080/hello to test code
+
 }
