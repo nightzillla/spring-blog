@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,6 +9,7 @@
               integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <!-- Bootstrap Icons -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
         <!-- Default Dark Mode -->
     <!--    <link rel="stylesheet" href="css/default.css">-->
     <!--    <script type="text/javascript" src="js/keys.js"></script>-->
@@ -16,6 +17,7 @@
     <body>
         <h1>Coffee!</h1>
         <h2>Select your favored roast:</h2>
+        <h2 th:if="${roast}">You selected: <span th:text="${roast}"></span> roast!</h2>
         <ul>
             <li><a href="/coffee/dark">Dark Roast</a></li>
             <li><a href="/coffee/medium">Medium Roast</a></li>
