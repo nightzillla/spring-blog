@@ -21,7 +21,8 @@ public class PostController {
             Post post2 = new Post("all Body","I am testing for body");
             List<Post> allPostsList = new ArrayList<>(List.of(post1, post2));
             model.addAttribute("allPosts",allPostsList);
-            return "/posts/show";
+//            return "/posts/show";
+            return "/posts/index";
         }
 
         @GetMapping("/{id}")

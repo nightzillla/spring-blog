@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Title</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Show One Post</title>
+    </head>
+    <body>
 
-<p>TESSSTTT POSTT </p>
-<!--<p th:text="${aPost.getBody()}"></p>-->
-<!--<p th:text="${aPost.getTitle()}"></p>-->
-<ul>
-    <li th:each="pooopoo : ${allPosts}">
-        <p th:text="${pooopoo.getBody()}"></p>
-        <p th:text="${pooopoo.getTitle()}"></p>
-    </li>
-</ul>
-</body>
+    <p>TESSSTTT POSTT </p>
+    <!--<p th:text="${aPost.getBody()}"></p>-->
+    <!--<p th:text="${aPost.getTitle()}"></p>-->
+    <ul>
+        <li th:each="pooopoo : ${allPosts}">
+            <p th:text="${pooopoo.getBody()}"></p>
+            <p th:text="${pooopoo.getTitle()}"></p>
+        </li>
+    </ul>
+    </body>
+</html>
