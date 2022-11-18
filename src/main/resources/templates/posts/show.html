@@ -6,15 +6,19 @@
         <title>Show One Post</title>
     </head>
     <body>
+        <div th:if="${post}">
+            <h2 th:text="${post.title}"></h2>
+            <h2 th:text="${post.body}"></h2>
+        </div>
+        <p th:unless="${post}">Could not find this post</p>
 
-    <p>TESSSTTT POSTT </p>
     <!--<p th:text="${aPost.getBody()}"></p>-->
     <!--<p th:text="${aPost.getTitle()}"></p>-->
-    <ul>
-        <li th:each="pooopoo : ${allPosts}">
-            <p th:text="${pooopoo.getBody()}"></p>
-            <p th:text="${pooopoo.getTitle()}"></p>
-        </li>
-    </ul>
+<!--    <ul>-->
+<!--        <li th:each="pooopoo : ${allPosts}">-->
+<!--            <p th:text="${pooopoo.getBody()}"></p>-->
+<!--            <p th:text="${pooopoo.getTitle()}"></p>-->
+<!--        </li>-->
+<!--    </ul>-->
     </body>
 </html>

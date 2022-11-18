@@ -14,22 +14,31 @@ import java.util.List;
 @RequestMapping("/post")
 public class PostController {
 
-        @GetMapping("/")
+        @GetMapping
 //        @ResponseBody
         public String allPosts(Model model) {
-            Post post1 = new Post("all Posts","I am testing for title");
-            Post post2 = new Post("all Body","I am testing for body");
+            Post post1 = new Post(1,"First","This is my first post!!");
+            Post post2 = new Post(2,"Second","Hey everyone, I'm back");
             List<Post> allPostsList = new ArrayList<>(List.of(post1, post2));
-            model.addAttribute("allPosts",allPostsList);
+            model.addAttribute("post",allPostsList);
 //            return "/posts/show";
             return "/posts/index";
         }
 
         @GetMapping("/{id}")
 //        @ResponseBody
-        public String onePost(@PathVariable int id, Model model) {
-            Post singlePost = new Post ("My Title", "My Body");
-            model.addAttribute("aPost", singlePost);
+        public String onePost(@PathVariable long id, Model model) {
+            Post post1 = new Post(1,"First","This is my first post!!");
+            Post post2 = new Post(2,"Second","Hey everyone, I'm back");
+            Post post3 = new Post(3,"yo","heye heye heyyyy");
+            List<Post> allPosts = new ArrayList<>(List.of(post1, post2, post3));
+            Post post = null;
+            for (Post UserPost : allPosts){
+                if(UserPost.getId() == id){
+                    post = UserPost;
+                }
+            }
+            model.addAttribute("post", post);
             return "/posts/show";
         }
 //        return "view an individual post " + id;
