@@ -10,11 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("roll-dice")
 public class DiceController {
 
-//    @GetMapping(path = "/roll-dice/{num}")
-//    public String diceRoll(@PathVariable int num, Model model) {
-//        model.addAttribute("randomNumber",(int)(6.0 * Math.random()) + 1);
-//        return "roll_dice";
-//    }
     @GetMapping
     public String diceRoll(){
         return "roll-dice";

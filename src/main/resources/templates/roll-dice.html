@@ -8,15 +8,18 @@
     <body>
     <h2> Pick a number:</h2>
     <ul>
-        <l1><a href="/roll-dice/1">1</a></l1>
-        <l1><a href="/roll-dice/2">2</a></l1>
-        <l1><a href="/roll-dice/3">3</a></l1>
-        <l1><a href="/roll-dice/4">4</a></l1>
-        <l1><a href="/roll-dice/5">5</a></l1>
-        <l1><a href="/roll-dice/6">6</a></l1>
+        <li><a href="/roll-dice/1">1</a></li>
+        <li><a href="/roll-dice/2">2</a></li>
+        <li><a href="/roll-dice/3">3</a></li>
+        <li><a href="/roll-dice/4">4</a></li>
+        <li><a href="/roll-dice/5">5</a></li>
+        <li><a href="/roll-dice/6">6</a></li>
     </ul>
     <div th:if="${userGuess}">
         <p>You rolled a <span th:text="${userGuess}"></span></p>
         <p>The random number was <span th:text="${randomNumber}"></span></p>
+        <p th:if="${userGuess} == ${randomNumber}"> You guessed right! </p>
+        <p th:if="${userGuess} != ${randomNumber}"> You guessed wrong! </p>
+
     </div>
     </body>
