@@ -11,9 +11,14 @@ public class Post {
     private long id;
     // We are creating the columns
     @Column(nullable = false, length = 50)
-
     private String title;
+    @Column(nullable = false)
     private String body;
+
+    public Post(String title, String body) {
+        this.title = title;
+        this.body = body;
+    }
 
 //    private long id;
 
@@ -46,10 +51,8 @@ public class Post {
 
     public Post (){
     }
-//    public Post (String title, String body){
-//       this.title = title;
-//       this.body = body;
-//    }
+
+
 
     public Post (long id,String title, String body){
         this.id = id;

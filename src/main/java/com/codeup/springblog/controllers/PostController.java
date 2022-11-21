@@ -2,6 +2,7 @@ package com.codeup.springblog.controllers;
 
 import com.codeup.springblog.models.Coffee;
 import com.codeup.springblog.models.Post;
+import com.codeup.springblog.repositories.PostRepositories;
 import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,12 +15,17 @@ import java.util.List;
 @RequestMapping("/post")
 public class PostController {
 
+    private final PostRepositories postDao;
+
+    public PostController(PostRepositories postDao) {
+        this.postDao = postDao;
+    }
         @GetMapping
 //        @ResponseBody
         public String allPosts(Model model) {
-            Post post1 = new Post(1,"First","This is my first post!!");
-            Post post2 = new Post(2,"Second","Hey everyone, I'm back");
-            List<Post> allPostsList = new ArrayList<>(List.of(post1, post2));
+//            Post post1 = new Post(1,"First","This is my first post!!");
+//            Post post2 = new Post(2,"Second","Hey everyone, I'm back");
+            List<Post> allPostsList = postDao.findAll();
             model.addAttribute("post",allPostsList);
 //            return "/posts/show";
             return "/posts/index";
@@ -43,18 +49,17 @@ public class PostController {
         }
 //        return "view an individual post " + id;
 //    }
-
-        @GetMapping("/posts/create")
-        @ResponseBody
+        @GetMapping("/post/create")
+//        @ResponseBody
         public String postsCreate() {
-            return "view the form for creating a post";
+            return "posts/create";
+//            return "view the form for creating a post";
         }
-
-        @PostMapping("/posts/create")
-        @ResponseBody
-        public String postsCreatePost() {
-            return "create a new post";
+        @PostMapping("/create")
+//        @ResponseBody
+        public String postsCreatePost(@RequestParam (name = "title") String title, @RequestParam (name = "body")String body) {
+            Post post = new Post (title, body);
+            postDao.save(post);
+            return "redirect:/post";
         }
-
-
 }
