@@ -6,7 +6,7 @@
         <title>All Posts</title>
     </head>
     <body>
-        <h1>You feed:</h1>
+        <h1>Your feed:</h1>
         <ul th:each="post : ${allPosts}">
             <li>
                 <h2 th:text="${post.title}"></h2>
