@@ -1,25 +1,53 @@
 package com.codeup.springblog.models;
 
-
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
 public class User {
+    // 1. Create a User class, with (at least) fields for id, username, email, and password.
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(nullable = false)
-    private String title;
+    private String username;
 
-    @Column
-    private String description;
+    @Column(nullable = false)
+    private String email;
 
-    @OneToOne
-    private User owner;
+    @Column(nullable = false)
+    private String password;
 
+    public User() {
+    }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+        @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Post> posts;
 }
 
 

@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "post")
+
 public class Post {
     // this id is for the entity
     @Id
@@ -57,5 +58,9 @@ public class Post {
         this.title = title;
         this.body = body;
     }
+
+    @ManyToOne
+    @JoinColumn (name = "user_id")
+    private User user;
 
 }
