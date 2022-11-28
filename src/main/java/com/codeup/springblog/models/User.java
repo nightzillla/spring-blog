@@ -11,16 +11,23 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 50, unique = true)
     private String username;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 60)
     private String email;
 
     @Column(nullable = false)
     private String password;
 
     public User() {
+    }
+
+    public User(long id, String email, String password, List<Post> posts) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.posts = posts;
     }
 
     public String getUsername() {

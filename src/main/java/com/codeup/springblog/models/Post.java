@@ -59,6 +59,12 @@ public class Post {
         this.body = body;
     }
 
+    public Post (String title, String body, User user){
+        this.title = title;
+        this.body = body;
+        this.user = user;
+    }
+
     @ManyToOne
     @JoinColumn (name = "user_id")
     private User user;
