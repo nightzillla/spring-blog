@@ -45,12 +45,12 @@ public class CoffeeController {
     public String showSuppliersForm(Model model){
         List<Supplier> suppliers = suppliersDao.findAll();
         model.addAttribute("suppliers", suppliers);
-        return "suppliers";
+        return "/suppliers";
     }
     @PostMapping("/suppliers")
     public String insertSupplier(@RequestParam(name = "name") String name){
         Supplier supplier = new Supplier(name);
         suppliersDao.save(supplier);
-        return "redirect:/suppliers";
+        return "redirect:/coffee/suppliers";
     }
 } // end of CoffeeController

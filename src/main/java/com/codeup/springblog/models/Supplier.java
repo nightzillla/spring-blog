@@ -16,6 +16,10 @@ public class Supplier {
     public Supplier(String name) {
     }
 
+    public Supplier() {
+
+    }
+
     public long getId() {
         return id;
     }
