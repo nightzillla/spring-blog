@@ -23,11 +23,11 @@ public class PostController {
         this.userDao = userDao;
     }
 
-    @GetMapping
+    @GetMapping("/")
     public String allPosts(Model model) {
 
         List<Post> allPostsList = postDao.findAll();
-        model.addAttribute("post", allPostsList);
+        model.addAttribute("posts", allPostsList);
         return "/posts/index";
     }
 
@@ -55,8 +55,8 @@ public class PostController {
     }
 
     @GetMapping("/post/create")
-    public String addPost(){
-        return "/posts/show";
+    public String showCreatePostForm(){
+        return "/posts/create";
     }
 
     @PostMapping("/post/create")
@@ -64,7 +64,7 @@ public class PostController {
         User user = userDao.findById(1L);
         Post post = new Post(title, body, user);
         postDao.save(post);
-        return "/posts/user";
+        return "redirect:/";
     }
 
     public String postsCreatePost(@RequestParam(name = "title") String title, @RequestParam(name = "body") String body) {
