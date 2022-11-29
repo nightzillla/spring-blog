@@ -16,7 +16,6 @@ import java.util.List;
 @Controller
 @RequestMapping("/coffee")
 public class CoffeeController {
-
     private final CoffeeRepositories coffeesDao;
     private final SupplierRepositories suppliersDao;
     private final CustomerRepository customerDao;
@@ -59,13 +58,18 @@ public class CoffeeController {
     }
 
     @GetMapping("/register")
-    public String showRegistrationForm(){
+    public String showRegistrationForm(Model model){
+        model.addAttribute("customer", new Customer());
         return "/registration";
     }
-
+//    @PostMapping("/customer/new")
+//    public String RegisterCustomer(@RequestParam(name = "name") String name, @RequestParam(name = "email") String email) {
+//        customerDao.save(new Customer(name,email));
+//        return "redirect:/coffee";
+//    }
     @PostMapping("/customer/new")
-    public String RegisterCustomer(@RequestParam(name = "name") String name, @RequestParam(name = "email") String email) {
-        customerDao.save(new Customer(name,email));
+    public String registerCustomer(@ModelAttribute Customer customer){
+        customerDao.save(customer);
         return "redirect:/coffee";
     }
 
@@ -73,7 +77,7 @@ public class CoffeeController {
     public String favoriteCoffee(@PathVariable long customerId, @PathVariable long coffeeId) {
         Customer customer = customerDao.findById(customerId);
         List<Coffee> favorites = customer.getCoffeeList();
-        favorites.add(coffeesDao.findbyId(coffeeId));
+        favorites.add(coffeesDao.findById(coffeeId));
         customer.setCoffeeList(favorites);
         customerDao.save(customer);
         return "redirect:/coffee";

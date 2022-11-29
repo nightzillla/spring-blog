@@ -7,5 +7,4 @@ public interface CoffeeRepositories extends JpaRepository<Coffee, Long> {
     
     Coffee findById(long id);
 
-    Coffee findbyId(long coffeeId);
 }

@@ -9,7 +9,7 @@
     <div>
         <ul>
             <li th:each="coffee : ${coffees}">
-                <a th:href="@{|/coffee/${coffee.getId()}|}">
+                <a th:href="@{|/coffee/${coffee.id}|}">
                     <span th:text="${coffee.brand}"></span>
                     <span th:text="${coffee.origin}"></span>
                     <span th:text="${coffee.roast}"></span>
