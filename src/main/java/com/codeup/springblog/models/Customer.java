@@ -18,9 +18,9 @@ public class Customer {
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
-            name = "customers coffee",
-            joinColumns = {@JoinColumn(name = "customer id")},
-            inverseJoinColumns = {@JoinColumn(name = "coffee id")}
+            name = "customers_coffee",
+            joinColumns = {@JoinColumn(name = "customer_id")},
+            inverseJoinColumns = {@JoinColumn(name = "coffee_id")}
     )
     private List<Coffee> coffeeList;
 
