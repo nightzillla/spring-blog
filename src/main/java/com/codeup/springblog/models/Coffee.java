@@ -78,4 +78,6 @@ public class Coffee {
     public void setBrand(String brand) {
         this.brand = brand;
     }
-}
+
+
+} // End of Coffee

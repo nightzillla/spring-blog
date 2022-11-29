@@ -13,6 +13,9 @@ public class Supplier {
     @Column(nullable = false)
     private String name;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "supplier")
+    private List<Coffee> coffees;
+
     public Supplier(String name) {
     }
 
@@ -32,8 +35,6 @@ public class Supplier {
         return id;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "supplier")
-    private List<Coffee> coffees;
 
     public void setId(long id) {
         this.id = id;
