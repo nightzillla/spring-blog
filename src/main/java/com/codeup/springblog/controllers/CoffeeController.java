@@ -4,6 +4,7 @@ import com.codeup.springblog.models.Coffee;
 import com.codeup.springblog.models.Supplier;
 import com.codeup.springblog.repositories.CoffeeRepositories;
 import com.codeup.springblog.repositories.SupplierRepositories;
+import org.apache.logging.log4j.util.PerformanceSensitive;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -53,4 +54,19 @@ public class CoffeeController {
         suppliersDao.save(supplier);
         return "redirect:/coffee/suppliers";
     }
+
+    @GetMapping("/register")
+    public String showRegistrationForm(){
+        return "/registration";
+    }
+
+    @PostMapping("/customer/new")
+    public String RegisterCustomer() {
+        return "redirect:/coffee";
+    }
+
+
+
+
+
 } // end of CoffeeController

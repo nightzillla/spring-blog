@@ -1,6 +1,7 @@
 package com.codeup.springblog.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 // This is a POJO ("Plain Old Java Object")
 @Entity
@@ -15,6 +16,9 @@ public class Coffee {
 
     @ManyToOne
     private Supplier supplier;
+
+    @ManyToMany(mappedBy = "coffeeList")
+    private List<Customer> customers;
 
     public Coffee() {
     }

@@ -1,6 +1,7 @@
 package com.codeup.springblog.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "customers")
@@ -15,6 +16,13 @@ public class Customer {
     @Column(nullable = false, length = 100)
     private String email;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "customers coffee",
+            joinColumns = {@JoinColumn(name = "customer id")},
+            inverseJoinColumns = {@JoinColumn(name = "coffee id")}
+    )
+    private List<Coffee> coffeeList;
 
     public String getName() {
         return name;
@@ -32,6 +40,17 @@ public class Customer {
         this.email = email;
     }
 
+    public List<Coffee> getCoffeeList() {
+        return coffeeList;
+    }
+
+    public void setCoffeeList(List<Coffee> coffeeList) {
+        this.coffeeList = coffeeList;
+    }
+
+    public Customer() {
+
+    }
     public Customer(long id, String name, String email) {
         this.id = id;
         this.name = name;
