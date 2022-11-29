@@ -19,6 +19,12 @@ public class User {
 
     @Column(nullable = false)
     private String password;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Post> posts;
+
+    public long getId() {
+        return id;
+    }
 
     public User() {
     }
@@ -53,8 +59,6 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-        @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<Post> posts;
 }
 
 

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping("/post")
+//@RequestMapping("/post")
 public class PostController {
 
     private final PostRepositories postDao;
@@ -24,18 +24,14 @@ public class PostController {
     }
 
     @GetMapping
-//        @ResponseBody
     public String allPosts(Model model) {
-//            Post post1 = new Post(1,"First","This is my first post!!");
-//            Post post2 = new Post(2,"Second","Hey everyone, I'm back");
+
         List<Post> allPostsList = postDao.findAll();
         model.addAttribute("post", allPostsList);
-//            return "/posts/show";
         return "/posts/index";
     }
 
     @GetMapping("/{id}")
-//        @ResponseBody
     public String onePost(@PathVariable long id, Model model) {
         Post post1 = new Post(1, "First", "This is my first post!!");
         Post post2 = new Post(2, "Second", "Hey everyone, I'm back");
@@ -51,17 +47,25 @@ public class PostController {
         return "/posts/show";
     }
 
-    //        return "view an individual post " + id;
-//    }
-    @GetMapping("/post/create")
-//        @ResponseBody
-    public String postsCreate() {
-        return "posts/create";
-//            return "view the form for creating a post";
+    @GetMapping("/post/{id}")
+    public String twoPost(@PathVariable long id, Model model) {
+        Post post = postDao.findById(id);
+        model.addAttribute("post", post);
+        return "/posts/show";
     }
 
-    @PostMapping("/create")
-//        @ResponseBody
+    @GetMapping("/post/create")
+    public String addPost(){
+        return "/posts/show";
+    }
+
+    @PostMapping("/post/create")
+    public String submitPost(@RequestParam(name="title") String title, @RequestParam(name="body") String body){
+        User user = userDao.findById(1L);
+        Post post = new Post(title, body, user);
+        postDao.save(post);
+        return "/posts/user";
+    }
 
     public String postsCreatePost(@RequestParam(name = "title") String title, @RequestParam(name = "body") String body) {
         Post post = new Post(title, body);
@@ -70,10 +74,10 @@ public class PostController {
         return "redirect:/post";
     }
 
-    @GetMapping("/post/user")
-    public String userCreate() {
-        return "posts/user";
-    }
+//    @GetMapping("/post/user")
+//    public String userCreate() {
+//        return "posts/user";
+//    }
 
 
 }
