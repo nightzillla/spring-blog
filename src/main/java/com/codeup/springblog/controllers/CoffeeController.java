@@ -27,7 +27,6 @@ import java.util.List;
     public String coffee(){
         return "coffee";
     }
-
     @GetMapping("/{roast}")
     public String roast(@PathVariable String roast, Model model){
         Coffee selection = new Coffee(roast, "Cool Beans");
@@ -44,7 +43,6 @@ import java.util.List;
         model.addAttribute("coffees", coffees);
         return "all-coffees";
     }
-
     @GetMapping("/new")
     public String addCoffeeForm(Model model){
         List<Supplier> suppliers = suppliersDao.findAll();
@@ -62,7 +60,6 @@ import java.util.List;
         model.addAttribute("email", email);
         return "coffee";
     }
-
     @GetMapping("/all")
     public String showAllCoffee(Model model){
         List<Coffee> allCoffee = coffeesDao.findAll();
@@ -88,8 +85,6 @@ import java.util.List;
         model.addAttribute("customer", new Customer());
         return "/registration";
     }
-
-
     @PostMapping("/customer/new")
     public String registerCustomer(@ModelAttribute Customer customer) {
         customerDao.save(customer);

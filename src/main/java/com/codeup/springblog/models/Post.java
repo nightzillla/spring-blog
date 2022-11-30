@@ -25,7 +25,6 @@ public class Post {
         this.body = body;
     }
 
-
     public long getId() {
         return id;
     }
