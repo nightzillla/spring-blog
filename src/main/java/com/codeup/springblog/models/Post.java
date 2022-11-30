@@ -20,11 +20,6 @@ public class Post {
     @JoinColumn (name = "user_id")
     private User user;
 
-    public Post(String title, String body) {
-        this.title = title;
-        this.body = body;
-    }
-
     public long getId() {
         return id;
     }
@@ -63,6 +58,11 @@ public class Post {
     public Post (){
     }
 
+    public Post(String title, String body) {
+        this.title = title;
+        this.body = body;
+    }
+
     public Post (long id,String title, String body){
         this.id = id;
         this.title = title;
@@ -70,6 +70,13 @@ public class Post {
     }
 
     public Post (String title, String body, User user){
+        this.title = title;
+        this.body = body;
+        this.user = user;
+    }
+
+    public Post(long id, String title, String body, User user) {
+        this.id = id;
         this.title = title;
         this.body = body;
         this.user = user;
