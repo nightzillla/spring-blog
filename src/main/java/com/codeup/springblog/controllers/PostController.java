@@ -47,20 +47,20 @@ public class PostController {
         return "/posts/show";
     }
 
-    @GetMapping("/post/{id}")
+    @GetMapping("/posts/{id}")
     public String twoPost(@PathVariable long id, Model model) {
         Post post = postDao.findById(id);
         model.addAttribute("post", post);
         return "/posts/show";
     }
 
-    @GetMapping("/post/create")
+    @GetMapping("/posts/create")
     public String showCreatePostForm(Model model){
         model.addAttribute("post", new Post ());
         return "/posts/create";
     }
 
-    @PostMapping("/post/create")
+    @PostMapping("/posts/create")
     public String submitPost(@ModelAttribute Post post){
         User user = userDao.findById(1L);
 //        Post post = new Post(title, body, user);
@@ -69,14 +69,14 @@ public class PostController {
         return "redirect:/";
     }
 
-    @GetMapping("/post/{id}/edit")
+    @GetMapping("/posts/{id}/edit")
     public String showEditPost(Model model,  @PathVariable long id ){
         Post post = postDao.findById(id);
         model.addAttribute("post", post);
         return "/posts/edit";
     }
 
-    @PostMapping("/post/{id}/edit")
+    @PostMapping("/posts/{id}/edit")
     public String editPost(@ModelAttribute Post post) {
         postDao.save(post);
         return "redirect:/";

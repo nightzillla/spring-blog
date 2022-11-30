@@ -26,7 +26,9 @@ public class User {
         return id;
     }
 
-    public User() {
+    public User(){};
+
+    public User(long id, String username, String email, String password) {
     }
 
     public User(long id, String email, String password, List<Post> posts) {
