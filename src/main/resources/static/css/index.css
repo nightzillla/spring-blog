@@ -1,8 +1,15 @@
 @font-face {
     font-family: Aesthetic;
-    src: url("/static/font/AestheticRegular.otf");
+    src: url("../font/AestheticRegular.otf");
 }
 
 h1 {
-    font-family: Aesthetic, sans-serif;
+    font-family: Aesthetic, sans-serif,Santana;
+}
+
+.customFont {
+    font-family: Aesthetic, sans-serif,Santana;
+}
+#customFont {
+    font-family: Aesthetic, sans-serif,Santana;
 }
