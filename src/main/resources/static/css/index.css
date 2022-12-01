@@ -1,0 +1,8 @@
+@font-face {
+    font-family: Aesthetic;
+    src: url("/static/font/AestheticRegular.otf");
+}
+
+h1 {
+    font-family: Aesthetic, sans-serif;
+}
