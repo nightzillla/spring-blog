@@ -1,3 +1,7 @@
+import * as THREE from 'three';
+
+const scene = new THREE.Scene();
+
 $(document).ready(function() {
     $(".favorite").on('click', function() {
         let customerId = $(this).attr("data-customer-id");
