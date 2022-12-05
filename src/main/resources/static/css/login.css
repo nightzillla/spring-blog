@@ -18,3 +18,7 @@
     display: flex;
     padding-top: 50px;
 }
+.login-home {
+    /*display: flex;*/
+    padding-top: 15px !important;
+}

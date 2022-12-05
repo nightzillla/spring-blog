@@ -60,6 +60,7 @@ public class PostController {
 
     @GetMapping("/posts/create")
     public String showCreatePostForm(Model model){
+        System.out.println("inside showCreatePostForm");
         model.addAttribute("post", new Post ());
         return "/posts/create";
     }
