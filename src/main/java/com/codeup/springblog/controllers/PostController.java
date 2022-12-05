@@ -85,7 +85,15 @@ public class PostController {
     @PostMapping("/posts/{id}/edit")
     public String editPost(@ModelAttribute Post post) {
 
-        List<User> userList = userDao.findAll();
+//        List<User> userList = userDao.findAll();
+        System.out.println(post.toString());
+        System.out.println(post.getId());
+        System.out.println(post.getTitle());
+        System.out.println(post.getBody());
+        System.out.println(post.getUser().getUsername());
+        long userId = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId();
+        User user = userDao.findById(userId);
+        post.setUser(user);
         postDao.save(post);
         return "redirect:/";
     }
