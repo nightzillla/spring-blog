@@ -46,7 +46,12 @@
             <h2 th:text="${post.title}"></h2>
             <p th:text="${post.body}"></p>
             <a sec:authorize="isAuthenticated()" th:if="${post.user.id} == ${#authentication.principal.id}" th:href="@{|/posts/${post.id}/edit|}">Edit Post</a>
+            <a sec:authorize="isAuthenticated()" th:if="${post.user.id} == ${#authentication.principal.id}" th:action="get" th:href="@{|/delete/${post.getId()}|}"><button>Delete</button></a>
         </li>
+<!--        <div th:if="${user.getId() == post.getUser().getId()}">-->
+<!--            <a th:href="@{|/posts/${post.getId()}/edit|}"><button>Edit</button></a>-->
+<!--            <a th:action="get" th:href="@{|/delete/${post.getId()}|}"><button>Delete</button></a>-->
+<!--        </div>-->
     </ul>
     </body>
     <!-- JavaScript Bundle with Popper -->

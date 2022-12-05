@@ -87,16 +87,29 @@ public class PostController {
     public String editPost(@ModelAttribute Post post) {
 
 //        List<User> userList = userDao.findAll();
-        System.out.println(post.toString());
-        System.out.println(post.getId());
-        System.out.println(post.getTitle());
-        System.out.println(post.getBody());
-        System.out.println(post.getUser().getUsername());
+//        System.out.println(post.toString());
+//        System.out.println(post.getId());
+//        System.out.println(post.getTitle());
+//        System.out.println(post.getBody());
+//        System.out.println(post.getUser().getUsername());
         long userId = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId();
         User user = userDao.findById(userId);
         post.setUser(user);
         postDao.save(post);
         return "redirect:/";
     }
+
+    @GetMapping("/delete/{postID}")
+    public String deletePost(@PathVariable Long postID){
+        User myUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if(myUser.getId() == postDao.findById(postID).get().getUser().getId()){
+            postDao.deleteById(postID);
+            return "redirect:/";
+        } else {
+            return "redirect:/";
+        }
+    }
+
+
 
 }
