@@ -6,3 +6,14 @@
     display: flex;
     position: relative;
 }
+.body {
+    background-color: black;
+}
+.loginForm {
+    display: flex;
+    position: absolute;
+}
+.form {
+    display: flex;
+    padding-top: 50px;
+}

@@ -9,7 +9,7 @@
         <form th:action="@{/logout}" th:method="post">
             <button>Logout</button>
         </form>
-        <h1>Your feeds:</h1>
+        <h1>Your blog feeds:</h1>
         <ul th:each="post : ${posts}">
             <li>
                 <h2 th:text="${post.title}"></h2>
