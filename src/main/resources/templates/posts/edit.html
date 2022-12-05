@@ -16,6 +16,13 @@
         <input type="text" id="body" th:field="*{body}">
         <input type="submit" value="submit">
 <!--        @{/posts/${id}/edit(id=${post.id})}-->
+        <select name="user" id="user" th:field="*{user.id}" >
+            <option
+                    th:each="post : ${post}"
+                    th:value="${post.user.id}"
+                    th:text="${post.user.username}">
+            </option>
+        </select>
     </form>
 </fieldset>
 </body>

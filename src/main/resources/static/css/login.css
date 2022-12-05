@@ -1,6 +1,7 @@
 .fullWorld {
     display: flex;
     position: absolute;
+    margin-top: 100px;
 }
 .clickMe {
     display: flex;

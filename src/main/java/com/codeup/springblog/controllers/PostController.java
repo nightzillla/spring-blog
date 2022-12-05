@@ -84,6 +84,8 @@ public class PostController {
 
     @PostMapping("/posts/{id}/edit")
     public String editPost(@ModelAttribute Post post) {
+
+        List<User> userList = userDao.findAll();
         postDao.save(post);
         return "redirect:/";
     }
